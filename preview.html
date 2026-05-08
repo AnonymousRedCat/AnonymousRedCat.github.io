@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wikipedia Speedrun</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        background: linear-gradient(180deg, #0f172a, #020617);
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 20px 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+
+        border: none;
+        border-radius: 14px;
+
+        background: #2563eb;
+        color: white;
+
+        cursor: pointer;
+        transition: 0.15s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        background: #3b82f6;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>⚡ Wikipedia Speedrun</h1>
+
+<button onclick="startSpeedrun()">
+    Generate START + TARGET
+</button>
+
+<script>
+function startSpeedrun() {
+
+    const wiki = "https://en.wikipedia.org/wiki/Special:Random";
+
+    // Open both tabs immediately (critical for Firefox)
+    const startTab = window.open(wiki, "_blank");
+    const targetTab = window.open(wiki, "_blank");
+
+    // Safety check (popup blockers)
+    if (!startTab || !targetTab) {
+        alert("Popup blocked — allow popups for this site.");
+        return;
+    }
+
+    // Optional: give them a brief label moment in title bar
+    startTab.document.title = "START";
+    targetTab.document.title = "TARGET";
+}
+</script>
+
+</body>
+</html>
